@@ -55,6 +55,17 @@ function App() {
   );
 
   const handleScore = (points: number) => {
+    const currentPlayerScore = scores[playerState.currentPlayer].reduce(
+      (sum, score) => sum + score,
+      0
+    );
+
+    if (gameState.points - currentPlayerScore - points < 1) {
+      // score cannot be lower than 1, in normal darts game it should be 2
+      // but we do not require to end with a double as we suck at darts
+      return;
+    }
+
     const newScores = [...scores];
     newScores[playerState.currentPlayer] = [
       ...newScores[playerState.currentPlayer],

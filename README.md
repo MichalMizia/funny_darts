@@ -1,50 +1,25 @@
-# React + TypeScript + Vite
+# Funny darts
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a project I made for fun. Me and my roommate often play darts in our dorm room but we are not very good at it, so sometimes
+the darts end up sticking in the door instead of the board. We decided it would be a funny idea to somehow penalize this awful type of throw so I quickly created a react app for playing darts with a twist.
 
-Currently, two official plugins are available:
+Mostly it works like a normal dart app, you press spots on a dartboard where your dart has landed, there is miss and undo functionality (to add a miss you just press on the outer edge of the dartboard) but there is an additional button called "drzwi" - door in polish, each player has a list of boosts and pressing "drzwi" adds a boost for the current player. In the App.tsx component there is a list
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+```ts
+const ALL_BOOSTS = [
+  "Kolejną rundę rzucasz druga ręka, jeśli przynajmniej 2/3 rzuty nie będą punktowane to +50 pkt",
+  "Przeciwnik mówi ci czy twój kolejny rzut ma trafić w wartość parzystą czy nie parzystą, jeśli nie trafisz tego co miałeś +50",
+  "W kolejnej rundzie jeśli twoja liczba punktów nie będzie większa niż 50 pkt, to +50",
+  "Przeciwni gracze dostają -50 pkt ",
+  "Otwórz Instagrama, jeśli twój pierwszy reels nie będzie rasistowski to dostajesz +50",
+];
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+If you want to modify the boosts you can clone the project, change them, run
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
 ```
+npm i
+npm run dev
+```
+
+There is also an input for adding however many points you want to the current player, it supports negative numbers
