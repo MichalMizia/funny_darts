@@ -174,10 +174,7 @@ function App() {
     const randomBoost =
       ALL_BOOSTS[Math.floor(Math.random() * ALL_BOOSTS.length)];
     const newBoosts = [...playerState.boosts];
-    newBoosts[playerState.currentPlayer] = [
-      ...newBoosts[playerState.currentPlayer],
-      randomBoost,
-    ];
+    newBoosts[playerState.currentPlayer] = [randomBoost]; // only the last boost is kept
     setPlayerState({ ...playerState, boosts: newBoosts });
   };
 

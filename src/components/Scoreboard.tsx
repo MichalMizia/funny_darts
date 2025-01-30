@@ -28,7 +28,6 @@ const Scoreboard: React.FC<ScoreboardProps> = ({
   boosts,
 }) => {
   const [manualScore, setManualScore] = useState<number | "">("");
-  console.log(boosts);
 
   const scrollRefs = useRef<(HTMLDivElement | null)[]>([]);
   const linkRefs = useRef<(HTMLAnchorElement | null)[]>([]);
@@ -156,6 +155,17 @@ const Scoreboard: React.FC<ScoreboardProps> = ({
                 ></a>
               </div>
             </ScrollArea>
+            <div className="mt-2">
+              <h3 className="text-lg font-bold">Average Score</h3>
+              <p className="text-sm">
+                {playerScores.length
+                  ? (
+                      (maxPoints - playerSums[index]) /
+                      playerScores.length
+                    ).toFixed(2)
+                  : "0.00"}
+              </p>
+            </div>
           </div>
         ))}
       </div>
